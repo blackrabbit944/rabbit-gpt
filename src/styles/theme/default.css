@@ -1,0 +1,37 @@
+.theme-default {
+    --color-primary: rgb(22 163 74);
+    --color-secondary: #34495e;
+
+    --bg-main: #fff;
+    --bg-sider: #fff;
+
+    --color-bg: #fff;
+    --color-bg-popover: #fff;
+
+    --color-text-on-primary: #fff;
+    --color-text-on-secondary: #fff;
+
+    --color-btn-default-bg: #fff;
+    --color-btn-default-bg2: #eee;
+
+    --color-border: #ddd;
+    --color-border-light: #e5e5e5;
+
+    --color-text-main: #333;
+    --color-text-secondary: #666;
+
+    --color-message-bg-ai: rgb(34 197 94);
+    --color-message-bg-my: #333;
+
+    --color-message-ai: #fff;
+    --color-message-my: #fff;
+
+    --main-menu-item-bg: #fff;
+    --main-menu-item-bg-hover: #eee;
+
+    --rounded-message: 1rem;
+
+    --rounded-base: 0.25rem;
+    --rounded-lg: 0.5rem;
+    --rounded-sm: 0.125rem;
+}

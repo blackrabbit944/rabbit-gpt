@@ -1,0 +1,42 @@
+@layer base {
+    .color-primary {
+        color: var(--color-primary);
+    }
+    .color-secondary {
+        color: var(--color-secondary);
+    }
+    .color-border {
+        border-color: var(--color-border);
+    }
+    .color-border-light {
+        border-color: var(--color-border-light);
+    }
+    .color-text-main {
+        color: var(--color-text-main);
+    }
+    .color-text-secondary {
+        color: var(--color-text-secondary);
+    }
+
+    .color-message-bg-ai {
+        background-color: var(--color-message-bg-ai);
+    }
+    .color-message-bg-my {
+        background-color: var(--color-message-bg-my);
+    }
+    .color-message-ai {
+        color: var(--color-message-ai);
+    }
+    .color-message-my {
+        color: var(--color-message-my);
+    }
+    .rounded-base {
+        border-radius: var(--rounded-base);
+    }
+    .rounded-lg {
+        border-radius: var(--rounded-lg);
+    }
+    .rounded-sm {
+        border-radius: var(--rounded-sm);
+    }
+}

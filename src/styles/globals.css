@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "theme/default.css";
+@import "theme/dark.css";
+
+@layer base {
+    html .color-primary {
+        color: var(--color-primary);
+    }
+    .color-secondary {
+        color: var(--color-secondary);
+    }
+    .theme-border-main {
+        border-color: var(--color-border);
+    }
+    .theme-border-light {
+        border-color: var(--color-border-light);
+    }
+    .theme-text-main {
+        color: var(--color-text-main);
+    }
+    .theme-text-secondary {
+        color: var(--color-text-secondary);
+    }
+
+    .color-message-bg-ai {
+        background-color: var(--color-message-bg-ai);
+    }
+    .color-message-bg-my {
+        background-color: var(--color-message-bg-my);
+    }
+    .color-message-ai {
+        color: var(--color-message-ai);
+    }
+    .color-message-my {
+        color: var(--color-message-my);
+    }
+    .theme-rounded-base {
+        border-radius: var(--rounded-base);
+    }
+    .theme-rounded-lg {
+        border-radius: var(--rounded-lg);
+    }
+    .theme-rounded-sm {
+        border-radius: var(--rounded-sm);
+    }
+    html .bg-primary {
+        background-color: var(--color-primary);
+    }
+    .text-on-primary {
+        color: var(--color-text-on-primary);
+    }
+
+    html .bg-background {
+        background-color: var(--color-bg);
+    }
+    html .bg-popover {
+        background-color: var(--color-bg-popover);
+    }
+
+    .theme-btn-default-bg,
+    html .bg-background.theme-btn-default-bg {
+        background-color: var(--color-btn-default-bg);
+    }
+
+    .theme-btn-default-bg2 {
+        background-color: var(--color-btn-default-bg2);
+    }
+}
+
+.scrollbar-thumb {
+    @apply bg-gray-400;
+}
+.scrollbar-track {
+    @apply bg-gray-200;
+}
+.scrollbar-thumb-rounded-base {
+    @apply rounded-full;
+}
+
+.scroll-base {
+    @apply scrollbar-thin scrollbar-thumb scrollbar-track scrollbar-thumb-rounded-base;
+}
+
+body {
+    @apply theme-text-main;
+}
+.layout-main {
+    @apply grid grid-cols-main;
+    background-color: var(--bg-main);
+
+    .layout-left {
+        @apply border-r theme-border-main;
+    }
+}
+
+.sider {
+    @apply flex flex-col justify-between;
+    height: calc(100vh - 2rem);
+    background-color: var(--bg-sider);
+}
+
+.main-menu {
+    @apply flex flex-col gap-1;
+    .main-menu-item {
+        @apply flex justify-between items-center px-4 py-1  cursor-pointer;
+        background-color: var(--main-menu-item-bg);
+        &:hover {
+            background-color: var(--main-menu-item-bg-hover);
+        }
+        .icon {
+            @apply w-5 h-5 mr-2;
+        }
+        .text {
+            @apply flex-grow text-base;
+        }
+    }
+}
+
+.sub-menu {
+    @apply flex flex-col gap-1;
+    .sub-menu-item {
+        @apply flex justify-between items-center px-4 py-1 hover:bg-gray-100 cursor-pointer;
+        .icon {
+            @apply w-5 h-5 mr-2;
+        }
+        .text {
+            @apply flex-grow text-base;
+        }
+    }
+}
+
+.border-input {
+    @apply theme-border-light;
+}
+
+.logo-wrapper {
+    @apply h-16 flex justify-start items-center;
+}
+.logo {
+    @apply px-4 text-2xl font-bold;
+}
+
+.block-chat-input {
+    @apply flex w-full  p-4;
+    background-color: var(--bg-main);
+    .input-w {
+        @apply flex-grow flex mb-4;
+    }
+    .input {
+        @apply flex-grow focus:outline-none bg-transparent;
+    }
+    .chat-input-content {
+        @apply flex-grow mr-4;
+    }
+}
+.hkey-intro {
+    @apply text-xs items-center flex justify-start gap-2;
+}
+.hkey {
+    @apply theme-btn-default-bg py-1 px-2  border theme-border-light theme-rounded-sm;
+}
+
+.chatbox-wrapper {
+    @apply flex justify-between flex-col flex-grow mx-auto rounded-none overflow-hidden relative z-10 md:h-screen;
+    .bottom {
+        @apply w-full border-t theme-border-main;
+    }
+    .message-box {
+        @apply flex-grow w-full overflow-y-auto;
+    }
+    .input {
+        resize: none;
+    }
+    .title {
+        @apply flex justify-between items-center px-4 h-16 border-b flex-shrink-0 theme-border-main;
+        h1 {
+            @apply text-xl font-bold;
+        }
+    }
+}
+
+.max-right-page-1 {
+    @apply max-w-5xl;
+}
+
+.message-list {
+    @apply flex flex-col max-right-page-1 mx-auto px-4 md:px-2;
+    .username {
+        @apply mb-1 text-sm;
+    }
+}
+.message-list .prose {
+    @apply rounded-lg px-3 py-2 text-[15px];
+}
+.message-list .my-msg {
+    @apply justify-end self-end;
+    .username {
+        @apply text-end;
+    }
+    .prose {
+        background-color: var(--color-message-bg-my);
+        color: var(--color-message-my);
+        border-radius: var(--rounded-message);
+    }
+}
+.message-list .ai-msg {
+    @apply justify-start;
+    .prose {
+        background-color: var(--color-message-bg-ai);
+        color: var(--color-message-ai);
+        border-radius: var(--rounded-message);
+    }
+}
+
+.message-one {
+    @apply flex justify-between py-4 text-base max-w-2xl;
+    .ct {
+        @apply flex-grow text-base;
+    }
+    .username {
+        @apply text-primary;
+    }
+    .mine {
+        @apply text-secondary;
+    }
+    pre pre {
+        @apply bg-gray-300 p-4 my-4;
+    }
+}
+
+.block-writing {
+    @apply flex items-center gap-2 justify-center my-6 text-gray-400 rounded-lg px-4 py-2 w-48 mx-auto;
+    .icon {
+        @apply opacity-35;
+    }
+}
+
+.clean-btn {
+    @apply theme-btn-default-bg2 theme-rounded-base px-4 py-2 flex justify-start items-center gap-2 cursor-pointer;
+    .icon {
+        @apply w-5 h-5;
+    }
+    .text {
+        @apply text-sm capitalize;
+    }
+}
+
+.block-theme-select {
+    @apply mx-4;
+}
+
+.theme-select-trigger {
+    @apply flex items-center gap-2 cursor-pointer px-2;
+    .icon {
+        @apply w-5 h-5;
+    }
+}
