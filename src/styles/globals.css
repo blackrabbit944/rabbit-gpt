@@ -1,9 +1,9 @@
+@import "theme/default.css";
+@import "theme/dark.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "theme/default.css";
-@import "theme/dark.css";
 
 @layer base {
     html .color-primary {
@@ -110,7 +110,7 @@ body {
 .main-menu {
     @apply flex flex-col gap-1;
     .main-menu-item {
-        @apply flex justify-between items-center px-4 py-1  cursor-pointer;
+        @apply flex justify-between items-center px-4 py-1 cursor-pointer;
         background-color: var(--main-menu-item-bg);
         &:hover {
             background-color: var(--main-menu-item-bg-hover);
