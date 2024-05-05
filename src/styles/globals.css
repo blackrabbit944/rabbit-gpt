@@ -46,11 +46,16 @@
     .theme-rounded-sm {
         border-radius: var(--rounded-sm);
     }
-    html .bg-primary {
-        background-color: var(--color-primary);
-    }
     .text-on-primary {
         color: var(--color-text-on-primary);
+    }
+
+    html .bg-destructive {
+        @apply bg-red-500 border-red-600 text-white theme-rounded-base;
+    }
+
+    html .bg-primary {
+        background-color: var(--color-primary);
     }
 
     html .bg-background {
@@ -163,13 +168,19 @@ body {
     @apply theme-btn-default-bg py-1 px-2  border theme-border-light theme-rounded-sm;
 }
 
+.theme-scroll {
+    @apply scrollbar-thin;
+    --scrollbar-thumb: var(--color-scroll-thumb) !important;
+    --scrollbar-track: var(--color-scroll-track) !important;
+}
+
 .chatbox-wrapper {
     @apply flex justify-between flex-col flex-grow mx-auto rounded-none overflow-hidden relative z-10 md:h-screen;
     .bottom {
         @apply w-full border-t theme-border-main;
     }
     .message-box {
-        @apply flex-grow w-full overflow-y-auto;
+        @apply flex-grow w-full overflow-y-auto theme-scroll;
     }
     .input {
         resize: none;
