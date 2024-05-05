@@ -4,7 +4,7 @@ import "./../styles/globals.css";
 import dynamic from "next/dynamic";
 import { Toaster } from "@/components/ui/toaster";
 
-const NonSSRWrapper = ({ children }) => <>{children}</>;
+const NonSSRWrapper = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
 const ComponentWithNoSSR = dynamic(() => Promise.resolve(NonSSRWrapper), {
     ssr: false,

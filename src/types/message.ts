@@ -16,3 +16,8 @@ export interface MessageAndKeyType {
     promptKey: string;
     message: MessageType;
 }
+
+export interface PreMessageType {
+    content: string;
+    role: string;
+}

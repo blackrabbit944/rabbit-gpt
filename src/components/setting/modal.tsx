@@ -64,6 +64,11 @@ export default function SettingModal() {
         setOpen(false);
     };
 
+    interface FormValues {
+        openai_api_key: string;
+        claude_api_key: string;
+    }
+
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>

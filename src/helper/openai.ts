@@ -1,16 +1,15 @@
-import { GptMessageType } from "@/types/openai";
+import { PreMessageType } from "@/types/message";
 import { getCache } from "./local";
-// const fetch = require("node-fetch");
 
 export interface sendRequestProps {
     modelName?: string;
-    msgs: GptMessageType[];
+    msgs: PreMessageType[];
     onText?: (data: { text: string; id: string }) => void;
     onFinished?: (data: { text: string; id: string }) => void;
     onError?: (error: Error) => void;
 }
 
-async function readOneRowFromOpenaiApi(line: string): string {
+async function readOneRowFromOpenaiApi(line: string): Promise<string> {
     ///移除data:前缀
     const json_data = line.replace(/^data:/, "");
     ///解析json
@@ -46,7 +45,7 @@ export async function sendRequest(params: sendRequestProps): Promise<string> {
         "https://gateway.ai.cloudflare.com/v1/d3c42400d063e65d9a797c7d4dba04e4/jianda/openai/chat/completions";
 
     try {
-        const messages: GptMessageType[] = msgs.map((msg) => ({
+        const messages: PreMessageType[] = msgs.map((msg) => ({
             role: msg.role,
             content: msg.content,
         }));
@@ -136,7 +135,6 @@ export async function sendRequest(params: sendRequestProps): Promise<string> {
         return fullText;
     } catch (error) {
         if (onError) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onError(error as any);
         }
         throw error;

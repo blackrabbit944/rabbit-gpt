@@ -3,7 +3,7 @@ import React, { useEffect, useImperativeHandle } from "react";
 import { Formik, Form, Field, FieldProps } from "formik";
 import { Button } from "@/components/ui/button";
 import TextareaAutosize from "react-textarea-autosize";
-import { MessageType, MessageAndKeyType } from "@/types/message";
+import { PreMessageType, MessageAndKeyType } from "@/types/message";
 import { getRandomId, getUnixtimestamp } from "@/helper/misc";
 import { getCache } from "@/helper/local";
 
@@ -25,7 +25,7 @@ const ChatInput = React.forwardRef(
             recieveMessage,
             promptKey,
         }: {
-            getPreMessages: () => MessageType[];
+            getPreMessages: () => PreMessageType[];
             addSendMessage: (data: MessageAndKeyType) => void;
             beforeRecieveMessage: (data: { promptKey: string }) => void;
             recieveMessageSuccess: (data: MessageAndKeyType) => void;
@@ -194,6 +194,7 @@ const ChatInput = React.forwardRef(
                                                 onChange={(e) => field.onChange(e)}
                                                 onKeyDown={handleKeyDown} // Add onKeyDown event listener
                                                 autoFocus
+                                                value={values.content as string}
                                             />
                                             {meta.touched && meta.error && (
                                                 <div className="error">{meta.error}</div>

@@ -2,8 +2,9 @@
 import classNames from "classnames";
 import { getTheme, isDarkTheme } from "@/helper/local";
 import ReactMarkdown from "react-markdown";
+import { MessageType } from "@/types/message";
 
-export default function Message({ msg }) {
+export default function Message({ msg }: { msg: MessageType }) {
     let theme = getTheme();
     let isDark = isDarkTheme(theme);
     let isMine = msg.from == "user";

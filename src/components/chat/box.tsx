@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 
 import ChatInput from "@/components/chat/input";
-import { MessageType } from "@/types/message";
+import { MessageType, PreMessageType } from "@/types/message";
 import ChatMessage from "@/components/chat/message";
 import { useChatStore } from "@/store/chat";
 import UseAnimations from "react-useanimations";
@@ -63,7 +63,6 @@ export default function ChatBox() {
                 preMessages = MessageList.slice(-max_message_count_require);
             }
         }
-        console.log("preMessages1", preMessages);
 
         if (max_message_time_require) {
             //获得当前时间的date对象,往前推5分钟
@@ -86,20 +85,12 @@ export default function ChatBox() {
                 });
             }
         }
-        console.log("preMessages2", preMessages);
 
         if (!preMessages) {
             preMessages = [];
         }
 
-        interface PreMessageType {
-            content: string;
-            role: string;
-        }
-
         let preMessageOutput: PreMessageType[] = [];
-
-        console.log("preMessages", preMessages);
 
         preMessages.forEach((item) => {
             preMessageOutput.push({
@@ -107,7 +98,6 @@ export default function ChatBox() {
                 role: item.from,
             });
         });
-        console.log("preMessageOutput", preMessageOutput);
 
         return preMessageOutput;
     }, [MessageList]);
