@@ -1,8 +1,8 @@
 .theme-default {
-    --color-primary: rgb(22 163 74);
+    --color-primary: #00a9e0;
     --color-secondary: #34495e;
 
-    --bg-main: #fff;
+    --bg-main: #f8f8f8;
     --bg-sider: #fff;
 
     --color-bg: #fff;
@@ -12,29 +12,50 @@
     --color-text-on-secondary: #fff;
 
     --color-btn-default-bg: #fff;
-    --color-btn-default-bg2: #eee;
+    --color-btn-default-bg2: #e8e8e8;
 
     --color-border: #ddd;
     --color-border-light: #e5e5e5;
 
-    --color-text-main: #333;
-    --color-text-secondary: #666;
+    --color-text-main: #404040;
+    --color-text-secondary: #999;
 
-    --color-message-bg-ai: rgb(34 197 94);
+    --color-message-bg-ai: #00a9e0;
     --color-message-bg-my: #333;
 
     --color-message-ai: #fff;
     --color-message-my: #fff;
 
     --main-menu-item-bg: #fff;
-    --main-menu-item-bg-hover: #eee;
+    --main-menu-item-bg-hover: #f8f8f8;
+    --main-menu-item-text: #555;
 
     --color-scroll-track: #eee;
     --color-scroll-thumb: #888;
 
     --rounded-message: 1rem;
 
-    --rounded-base: 0.25rem;
+    --rounded-base: 0.5rem;
     --rounded-lg: 0.5rem;
     --rounded-sm: 0.125rem;
+
+    --shadow-1: 0 2px 4px #0000000f;
+    --border-1: 1px solid rgba(0, 0, 0, 0.1);
+
+    body {
+        font-family: "Pingfang SC", Microsoft Yahei, Arial, sans-serif;
+    }
+
+    .main-menu-item {
+        border: 1px solid #fff;
+    }
+    .main-menu-item:hover {
+        border: 1px solid #eee;
+    }
+
+    .layout-right {
+        background-image: radial-gradient(#ddd 1px, #f8f8f8 1px);
+        background-position: 353.072px 5605.22px;
+        background-size: 13.9274px 13.9274px;
+    }
 }

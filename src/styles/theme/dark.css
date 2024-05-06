@@ -1,15 +1,15 @@
 .theme-dark {
-    --color-primary: rgb(22 163 74);
+    --color-primary: rgb(0, 255, 94);
     --color-secondary: #34495e;
 
-    --bg-main: #000;
+    --bg-main: #222;
     --bg-sider: #000;
 
     --color-bg: #333;
     --color-bg-popover: #333;
 
     --color-btn-default-bg: #333;
-    --color-btn-default-bg2: #222;
+    --color-btn-default-bg2: #444;
 
     --color-text-on-primary: #fff;
     --color-text-on-secondary: #fff;
@@ -20,8 +20,8 @@
     --color-text-main: #fff;
     --color-text-secondary: #666;
 
-    --color-message-bg-ai: #277b4a;
-    --color-message-bg-my: #4186b5;
+    --color-message-bg-ai: #00af49;
+    --color-message-bg-my: #484848;
 
     --color-message-ai: #fff;
     --color-message-my: #fff;
@@ -34,7 +34,20 @@
 
     --rounded-message: 1rem;
 
-    --rounded-base: 0.25rem;
+    --rounded-base: 0.5rem;
     --rounded-lg: 0.5rem;
     --rounded-sm: 0.125rem;
+
+    .main-menu-item {
+        border: 1px solid #000;
+    }
+    .main-menu-item:hover {
+        border: 1px solid #222;
+    }
+
+    .layout-right {
+        background-image: radial-gradient(#000 1px, #222 1px);
+        background-position: 353.072px 5605.22px;
+        background-size: 13.9274px 13.9274px;
+    }
 }

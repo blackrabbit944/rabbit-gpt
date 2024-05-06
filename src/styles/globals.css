@@ -73,6 +73,10 @@
     .theme-btn-default-bg2 {
         background-color: var(--color-btn-default-bg2);
     }
+
+    .theme-text-secondary {
+        color: var(--color-text-secondary);
+    }
 }
 
 .scrollbar-thumb {
@@ -98,6 +102,7 @@ body {
 
     .layout-left {
         @apply border-r theme-border-main;
+        background-color: var(--bg-sider);
     }
 }
 
@@ -107,16 +112,21 @@ body {
     background-color: var(--bg-sider);
 }
 
+.text-logo {
+    color: var(--color-primary);
+}
+
 .main-menu {
-    @apply flex flex-col gap-1;
+    @apply flex flex-col py-2 px-2;
     .main-menu-item {
-        @apply flex justify-between items-center px-4 py-1 cursor-pointer;
+        @apply flex justify-between items-center px-4 py-1.5 cursor-pointer theme-rounded-base mb-0.5;
         background-color: var(--main-menu-item-bg);
+        color: var(--main-menu-item-text);
         &:hover {
             background-color: var(--main-menu-item-bg-hover);
         }
         .icon {
-            @apply w-5 h-5 mr-2;
+            @apply w-5 h-5 mr-2 opacity-75;
         }
         .text {
             @apply flex-grow text-base;
