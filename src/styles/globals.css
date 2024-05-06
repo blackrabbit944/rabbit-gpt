@@ -77,6 +77,20 @@
     .theme-text-secondary {
         color: var(--color-text-secondary);
     }
+
+    html .theme-select-item {
+        @apply cursor-pointer;
+        &:focus {
+            background-color: var(--main-menu-item-bg-hover);
+        }
+    }
+
+    .main-menu .main-menu-item.active {
+        color: var(--color-primary);
+        .icon {
+            color: var(--color-primary);
+        }
+    }
 }
 
 .scrollbar-thumb {
@@ -159,10 +173,10 @@ body {
 }
 
 .block-chat-input {
-    @apply flex w-full  p-4;
+    @apply flex w-full p-4 min-h-28 relative;
     background-color: var(--bg-main);
     .input-w {
-        @apply flex-grow flex mb-4;
+        @apply flex-grow flex mb-4 pl-1;
     }
     .input {
         @apply flex-grow focus:outline-none bg-transparent;
@@ -172,7 +186,7 @@ body {
     }
 }
 .hkey-intro {
-    @apply text-xs items-center flex justify-start gap-2;
+    @apply text-xs items-center flex justify-start gap-2 absolute bottom-4;
 }
 .hkey {
     @apply theme-btn-default-bg py-1 px-2  border theme-border-light theme-rounded-sm;
@@ -278,4 +292,21 @@ body {
     .icon {
         @apply w-5 h-5;
     }
+}
+
+.setting-bar {
+    @apply flex justify-between items-center px-4 h-16 border-b theme-border-main;
+    background-color: var(--bg-main);
+}
+
+.block-translate-select {
+    @apply flex justify-start items-center;
+}
+
+.translate-icon {
+    @apply w-5 h-5 mx-2 theme-text-secondary;
+}
+
+.bg-menu-hover {
+    @apply bg-gray-100;
 }

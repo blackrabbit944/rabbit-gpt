@@ -9,6 +9,7 @@ import { getCache } from "@/helper/local";
 
 import { sendRequest } from "@/helper/openai";
 import { useToast } from "@/components/ui/use-toast";
+import { getTranslatePrompt } from "@/helper/prompt";
 
 interface FormValues {
     content: string;
@@ -91,15 +92,30 @@ const ChatInput = React.forwardRef(
                 promptKey: promptKey,
             });
 
+            /*
+             *   根据不同的promptKey发送不同的请求
+             *   1.如果是chat,则自动带上preMessages,发送请求
+             *   2.如果是translate,则自动把输入的内容放入一个prompt中，发送请求
+             */
+
+            let sendMessages: PreMessageType[] = [];
+            switch (promptKey) {
+                case "chat":
+                    sendMessages = [...preMessages, { role: "user", content: content }];
+                    break;
+                case "translate":
+                    let lang = getCache("mainLanguage") || "en";
+                    let targetLang = getCache("translateLanguage") || "zh";
+                    const translationPrompt = getTranslatePrompt(lang, targetLang, content);
+                    sendMessages = [{ role: "user", content: translationPrompt }];
+                    break;
+                default:
+                    break;
+            }
+
             //发送请求
             sendRequest({
-                msgs: [
-                    ...preMessages,
-                    {
-                        role: "user",
-                        content: content,
-                    },
-                ],
+                msgs: sendMessages,
                 onText: (data) => {
                     console.log("执行到onText", data);
                     recieveMessage({

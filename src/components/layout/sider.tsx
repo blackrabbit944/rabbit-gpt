@@ -9,8 +9,13 @@ import {
 
 import SettingModal from "@/components/setting/modal";
 import SettingTheme from "@/components/setting/theme";
+import { useChatStore } from "@/store/chat";
+import classnames from "classnames";
 
 export default function Sider() {
+    const activePromptKey = useChatStore((state) => state.activePromptKey);
+    const setPromptKey = useChatStore((state) => state.setPromptKey);
+
     return (
         <div className="sider">
             <div className="sider-top">
@@ -18,11 +23,25 @@ export default function Sider() {
                     <Logo />
                 </div>
                 <div className="main-menu">
-                    <div className="main-menu-item">
+                    <div
+                        className={classnames("main-menu-item", {
+                            active: activePromptKey === "chat",
+                        })}
+                        onClick={() => {
+                            setPromptKey("chat");
+                        }}
+                    >
                         <ChatBubbleOvalLeftIcon className="icon" />
                         <div className="text">Chat</div>
                     </div>
-                    <div className="main-menu-item">
+                    <div
+                        className={classnames("main-menu-item", {
+                            active: activePromptKey === "translate",
+                        })}
+                        onClick={() => {
+                            setPromptKey("translate");
+                        }}
+                    >
                         <LanguageIcon className="icon" />
                         <div className="text">Translate</div>
                     </div>

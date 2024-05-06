@@ -10,6 +10,7 @@ import loading from "react-useanimations/lib/loading";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import ModelSelect from "./modelSelect";
 import { getUnixtimestamp } from "@/helper/misc";
+import TranslateSetting from "@/components/setting/translate";
 
 export default function ChatBox() {
     let messagesEndRef = React.useRef<HTMLDivElement>(null);
@@ -128,8 +129,7 @@ export default function ChatBox() {
         <div className="chatbox-wrapper">
             <div className="title">
                 <div className="flex justify-start items-center">
-                    <h1 className="mr-4">Chat</h1>
-                    <ModelSelect />
+                    <h1 className="mr-4">{activePromptKey}</h1>
                 </div>
                 <div>
                     <div className="clean-btn" onClick={() => clearMessageList(activePromptKey)}>
@@ -155,6 +155,10 @@ export default function ChatBox() {
                 <div ref={messagesEndRef} className="msg-end"></div>
             </div>
             <div className="bottom">
+                <div className="setting-bar">
+                    {activePromptKey == "translate" ? <TranslateSetting /> : null}
+                    <ModelSelect />
+                </div>
                 <ChatInput
                     ref={chatInputRef}
                     getPreMessages={getPreMessages}

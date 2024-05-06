@@ -32,6 +32,7 @@
     "react-markdown": "^9.0.1",
     "react-textarea-autosize": "^8.5.3",
     "react-useanimations": "^2.10.0",
+    "svg-country-flags": "^1.2.10",
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar": "^3.1.0",
     "tailwindcss-animate": "^1.0.7",
