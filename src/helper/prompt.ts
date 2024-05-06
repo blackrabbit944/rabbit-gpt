@@ -1,6 +1,6 @@
-const LanguageType = "en" || "zh" || "es" || "fr" || "de" || "it" || "ja" || "ko" || "vn";
+export type LanguageType = "en" | "zh" | "es" | "fr" | "de" | "it" | "ja" | "ko" | "vn";
 
-export const getLanguageName = (language: LanguageType) => {
+export const getLanguageName = (language: string) => {
     let languageMap: {
         [key: string]: string;
     } = {
@@ -18,12 +18,12 @@ export const getLanguageName = (language: LanguageType) => {
 };
 
 export const getTranslatePrompt = (
-    langauge: LanguageType,
-    targetLangauge: LanguageType,
+    langauge: string,
+    targetLangauge: string,
     content = ""
-) => {
+): string => {
     let targetLangaugeName = getLanguageName(targetLangauge);
-    let prompt;
+    let prompt = "";
     switch (langauge) {
         case "zh":
             prompt = `
