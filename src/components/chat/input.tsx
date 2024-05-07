@@ -106,7 +106,7 @@ const ChatInput = React.forwardRef(
                 case "translate":
                     let lang = getCache("mainLanguage") || "en";
                     let targetLang = getCache("translateLanguage") || "zh";
-                    const translationPrompt = getTranslatePrompt(lang, targetLang, content);
+                    const translationPrompt = getTranslatePrompt(targetLang, content);
                     sendMessages = [{ role: "user", content: translationPrompt }];
                     break;
                 default:

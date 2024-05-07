@@ -111,18 +111,35 @@ body {
     @apply theme-text-main;
 }
 .layout-main {
-    @apply grid grid-cols-main;
+    @apply grid grid-cols-1 sm:grid-cols-main;
+    height: 100vh;
     background-color: var(--bg-main);
-
     .layout-left {
-        @apply border-r theme-border-main;
+        @apply border-r theme-border-main hidden sm:block;
         background-color: var(--bg-sider);
+    }
+    .layout-right {
+        z-index: 1;
+        height: calc(100vh - 3.5rem);
+        padding: 3.5rem 0 0 0;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .layout-main {
+        .layout-right {
+            @apply p-0;
+        }
+    }
+    .chatbox-wrapper {
+        .message-box {
+            height: auto;
+        }
     }
 }
 
 .sider {
-    @apply flex flex-col justify-between;
-    height: calc(100vh - 2rem);
+    @apply flex flex-col justify-between h-screen pb-8;
     background-color: var(--bg-sider);
 }
 
@@ -201,10 +218,11 @@ body {
 .chatbox-wrapper {
     @apply flex justify-between flex-col flex-grow mx-auto rounded-none overflow-hidden relative z-10 md:h-screen;
     .bottom {
-        @apply w-full border-t theme-border-main;
+        @apply w-full border-t theme-border-main fixed bottom-0 sm:static;
     }
     .message-box {
-        @apply flex-grow w-full overflow-y-auto theme-scroll;
+        @apply flex-grow w-full overflow-y-auto theme-scroll overflow-x-hidden;
+        height: calc(100vh - 3rem - 15rem);
     }
     .input {
         resize: none;
@@ -251,7 +269,7 @@ body {
 }
 
 .message-one {
-    @apply flex justify-between py-4 text-base max-w-2xl;
+    @apply flex justify-between py-4 text-base max-w-full sm:max-w-2xl;
     .ct {
         @apply flex-grow text-base;
     }
@@ -263,6 +281,15 @@ body {
     }
     pre pre {
         @apply bg-gray-300 p-4 my-4;
+    }
+    p,
+    pre,
+    blockquote {
+        max-width: 90vw;
+        overflow: auto;
+    }
+    blockquote {
+        color: var(--color-text-secondary);
     }
 }
 
@@ -295,7 +322,7 @@ body {
 }
 
 .setting-bar {
-    @apply flex justify-between items-center px-4 h-16 border-b theme-border-main;
+    @apply flex justify-start gap-4 items-center px-4 h-16 border-b theme-border-main;
     background-color: var(--bg-main);
 }
 
