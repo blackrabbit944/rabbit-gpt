@@ -17,8 +17,8 @@ const ComponentWithNoSSR = dynamic(() => Promise.resolve(NonSSRWrapper), {
 });
 
 export const metadata: Metadata = {
-    title: "Jianda - A beautiful AI Chat Website",
-    description: "jianda.com",
+    title: "RabbitGPT - A beautiful GPT Chat Frontend",
+    description: "rabbitgpt",
 };
 
 export default function RootLayout({
