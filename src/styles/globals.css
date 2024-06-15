@@ -49,6 +49,9 @@
     .text-on-primary {
         color: var(--color-text-on-primary);
     }
+    .theme-text-placeholder {
+        color: var(--color-text-placeholder);
+    }
 
     html .bg-destructive {
         @apply bg-red-500 border-red-600 text-white theme-rounded-base;
@@ -336,4 +339,89 @@ body {
 
 .bg-menu-hover {
     @apply bg-gray-100;
+}
+
+.theme-input {
+    @apply flex h-10 w-full theme-rounded-base border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+.theme-input.large-input {
+    @apply h-16 text-xl px-6;
+    &::placeholder {
+        @apply theme-text-placeholder;
+    }
+}
+
+/*回答格式*/
+.prose :where(ol > li):not(:where([class~="not-prose"], [class~="not-prose"] *))::marker {
+    color: rgba(255, 255, 255, 0.5);
+}
+.message-one blockquote {
+    border-left: 0.25rem solid var(--color-primary);
+    color: var(--color-text-on-primary);
+}
+
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    background-color: var(--color-code-bg);
+}
+
+.chat-search-middle {
+    @apply grid;
+    grid-template-columns: auto 350px;
+    height: calc(100vh - 3.5rem);
+}
+.organic-list {
+    @apply p-4 overflow-y-auto theme-scroll;
+    height: calc(100vh - 3.5rem);
+}
+.organic-one {
+    @apply p-4 theme-rounded-base bg-background mb-4 py-4 cursor-pointer flex flex-col;
+    .organic-title {
+        @apply text-base font-bold theme-text-main;
+    }
+    .organic-desc {
+        @apply text-sm theme-text-secondary;
+    }
+}
+
+.block-steps {
+    @apply flex justify-start items-center gap-4 bg-background p-4 theme-rounded-base;
+    .step-one {
+        @apply flex justify-center items-center font-bold capitalize;
+        p {
+            @apply text-sm font-bold mx-4;
+        }
+    }
+    .icon {
+        @apply w-8 h-8 mr-2;
+    }
+    .arrow-icon {
+        @apply w-6 h-6 opacity-40;
+    }
+    .step-one.done {
+        .icon {
+            @apply color-primary;
+        }
+        @apply color-primary;
+    }
+    .step-one.active {
+        .icon {
+            @apply text-yellow-400;
+        }
+        @apply text-yellow-400;
+    }
+}
+
+.chat-search-chat {
+    @apply p-4;
+}
+
+.block-box {
+    @apply p-4 theme-rounded-base bg-background mt-4;
+}
+
+.search-result-item {
+    @apply flex justify-between items-center pb-4 mb-4 border-b theme-border-main;
+    &:last-child {
+        @apply pb-0 mb-0 border-0;
+    }
 }

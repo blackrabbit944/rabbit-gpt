@@ -81,7 +81,7 @@ export default function TranslateSetting({
                             width={20}
                             height={20}
                         />
-                        <div className="text">{showLanguage["name"]}</div>
+                        <div className="text hidden sm:flex">{showLanguage["name"]}</div>
                     </div>
                 </SelectTrigger>
                 <SelectContent>

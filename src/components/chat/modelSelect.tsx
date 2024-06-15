@@ -17,12 +17,14 @@ export default function ModelSelect() {
     };
     return (
         <Select onValueChange={saveModel} defaultValue={model}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="ChatGPT 3.5 turbo" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="gpt-3.5-turbo">ChatGPT 3.5 turbo</SelectItem>
-                <SelectItem value="gpt-4-turbo">ChatGPT 4.0 turbo</SelectItem>
+                <div className="text-sm pb-2 pt-1 px-2 opacity-40">选择使用模型</div>
+                <SelectItem value="gpt-3.5-turbo">GPT 3.5</SelectItem>
+                <SelectItem value="gpt-4-turbo">GPT 4.0</SelectItem>
+                <SelectItem value="gpt-4o">GPT 4o</SelectItem>
             </SelectContent>
         </Select>
     );

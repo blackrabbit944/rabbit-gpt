@@ -21,3 +21,8 @@ export interface PreMessageType {
     content: string;
     role: string;
 }
+
+export interface MessageAndSearchKeyType {
+    searchKey: string;
+    message: MessageType;
+}

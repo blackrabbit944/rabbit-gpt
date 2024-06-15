@@ -1,20 +1,36 @@
 "use client";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 
-import ChatInput from "@/components/chat/input";
 import { MessageType, PreMessageType } from "@/types/message";
-import ChatMessage from "@/components/chat/message";
 import { useChatStore } from "@/store/chat";
-import UseAnimations from "react-useanimations";
-import loading from "react-useanimations/lib/loading";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import ModelSelect from "./modelSelect";
-import { getUnixtimestamp } from "@/helper/misc";
-import TranslateSetting from "@/components/setting/translate";
 
-export default function ChatBox() {
+import { getUnixtimestamp } from "@/helper/misc";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Serper, { OrganicOneType } from "@/helper/serper";
+import SearchMessageBox from "@/components/search/messageBox";
+
+export default function SearchBox() {
+    let defaultQuestion = "蛇为什么要蜕皮";
+
     let messagesEndRef = React.useRef<HTMLDivElement>(null);
     let chatInputRef = React.useRef<any>(null);
+
+    let [result, setResult] = useState<OrganicOneType[]>([]);
+    let [isInputFocus, setIsInputFocus] = useState<boolean>(false);
+    let [tempQuestion, setTempQuestion] = useState<string>(defaultQuestion);
+    let [question, setQuestion] = useState<string>(defaultQuestion);
+    let [searchedQuestion, setSearchedQuestion] = useState<string>("");
+
+    const serper = new Serper();
+
+    const searchGoogle = async (q: string) => {
+        const searchResult = await serper.search(q, 10);
+        console.log("search result", result);
+        if (searchResult.organic) {
+            setResult(searchResult.organic);
+        }
+    };
 
     const beforeRecieveMessage = useChatStore((state) => state.beforeRecieveMessage);
     const recieveMessage = useChatStore((state) => state.recieveMessage);
@@ -125,51 +141,74 @@ export default function ChatBox() {
         }
     }, [MessageList, scrollToBottom]);
 
+    ///监听回车键
+    useEffect(() => {
+        if (isInputFocus) {
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (e.key === "Enter") {
+                    setQuestion(tempQuestion);
+                }
+            };
+            window.addEventListener("keydown", handleKeyDown);
+            return () => {
+                window.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [isInputFocus, tempQuestion]);
+
+    useEffect(() => {
+        if (question && question != searchedQuestion) {
+            console.log("问题改变了", question);
+            setSearchedQuestion(question);
+            searchGoogle(question);
+        }
+    }, [question, searchedQuestion, searchGoogle]);
+
     return (
         <div className="chatbox-wrapper">
-            <div className="title">
-                <div className="flex justify-start items-center">
-                    <h1 className="mr-4 font-roboto-condensed capitalize">{activePromptKey}</h1>
-                </div>
-                <div>
-                    <div className="clean-btn" onClick={() => clearMessageList(activePromptKey)}>
-                        <TrashIcon className="icon" />
-                        <span className="text">clean chat</span>
-                    </div>
-                </div>
-            </div>
-            <div className="message-box relative">
-                <div className="message-list">
-                    {MessageList.map((one) => {
-                        return <ChatMessage key={one.id} msg={one} />;
-                    })}
-                </div>
-                {status == "waiting" ? (
-                    <div className="block-writing">
-                        <div className="icon">
-                            <UseAnimations animation={loading} size={24} />
-                        </div>
-                        正在输入中...
-                    </div>
-                ) : null}
-                <div ref={messagesEndRef} className="msg-end"></div>
-            </div>
-            <div className="bottom">
-                <div className="setting-bar">
-                    {activePromptKey == "translate" ? <TranslateSetting /> : null}
-                    <ModelSelect />
-                </div>
-                <ChatInput
-                    ref={chatInputRef}
-                    getPreMessages={getPreMessages}
-                    promptKey={activePromptKey}
-                    beforeRecieveMessage={beforeRecieveMessage}
-                    recieveMessage={recieveMessage}
-                    recieveMessageSuccess={recieveMessageSuccess}
-                    addSendMessage={addSendMessage}
-                    recieveMessageError={recieveMessageError}
+            <div className="chat-search-title p-4 border-b theme-border-main bg-background">
+                <Input
+                    placeholder="输入你的问题"
+                    className="large-input"
+                    value={tempQuestion}
+                    onChange={(e) => {
+                        console.log("e", e.target.value);
+                        setTempQuestion(e.target.value);
+                    }}
+                    onFocus={() => {
+                        setIsInputFocus(true);
+                    }}
+                    onBlur={() => {
+                        setIsInputFocus(false);
+                    }}
                 />
             </div>
+            <div className="chat-search-middle">
+                <div>
+                    <div className="chat-search-chat">
+                        <SearchMessageBox resultList={result} question={question} />
+                        <div ref={messagesEndRef}></div>
+                    </div>
+                </div>
+                <div>
+                    <div className="organic-list">
+                        {result.map((item, index) => {
+                            return (
+                                <a
+                                    key={index}
+                                    className="organic-one"
+                                    href={item.link}
+                                    target="_blank"
+                                >
+                                    <div className="organic-title">{item.title}</div>
+                                    <div className="organic-desc">{item.snippet}</div>
+                                </a>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+            <div className="chat-search-bottom"></div>
         </div>
     );
 }

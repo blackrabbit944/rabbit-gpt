@@ -28,3 +28,30 @@ export const getTranslatePrompt = (targetLangauge: string, content = ""): string
     `;
     return prompt;
 };
+
+interface ContentOneType {
+    number: string;
+    content: string;
+}
+
+export const getSearchPrompt = (contentList: ContentOneType[], question): string => {
+    let allContent: string = "";
+    contentList.forEach((item, index) => {
+        allContent += `
+        网页编号:${item.number}
+        内容:${item.content}
+        ----
+        `;
+    });
+
+    let prompt = `
+    我现在给你几个网页的内容,请你按照我给你的内容,回到我提出的问题:
+    ${allContent},
+    我的问题是:
+    """
+    ${question}
+    """,
+    你回答的内容要尽量详细,谢谢!
+    `;
+    return prompt;
+};

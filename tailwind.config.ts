@@ -75,6 +75,9 @@ const config = {
             gridTemplateColumns: {
                 main: "280px 1fr",
             },
+            fontFamily: {
+                "roboto-condensed": ["var(--font-roboto-condensed)"],
+            },
         },
     },
     plugins: [

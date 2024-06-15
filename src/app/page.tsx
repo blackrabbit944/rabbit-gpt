@@ -1,9 +1,19 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import ChatBox from "@/components/chat/box";
+import LayoutMain from "@/components/layout/main";
+import { useEffect } from "react";
+import { getTheme, setThemeInCss } from "@/helper/local";
+
+export default function ChatPage() {
+    useEffect(() => {
+        let theme = getTheme();
+        setThemeInCss(theme);
+    }, []);
+
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            你好世界
-        </main>
+        <LayoutMain>
+            <ChatBox />
+        </LayoutMain>
     );
 }

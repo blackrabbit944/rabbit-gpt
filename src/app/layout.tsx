@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./../styles/globals.css";
 import dynamic from "next/dynamic";
 import { Toaster } from "@/components/ui/toaster";
+import { Roboto_Condensed } from "next/font/google";
+
+const roboto_condensed = Roboto_Condensed({
+    subsets: ["latin"],
+    variable: "--font-roboto-condensed",
+});
 
 const NonSSRWrapper = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
@@ -10,8 +15,6 @@ const ComponentWithNoSSR = dynamic(() => Promise.resolve(NonSSRWrapper), {
     ssr: false,
     loading: () => <p>Loading...</p>,
 });
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Jianda - A beautiful AI Chat Website",
@@ -25,7 +28,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="theme-default">
-            <body className={inter.className}>
+            <body className={roboto_condensed.variable}>
                 <ComponentWithNoSSR>{children}</ComponentWithNoSSR>
                 <Toaster />
             </body>

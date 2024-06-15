@@ -1,9 +1,10 @@
 "use client";
-
-import ChatBox from "@/components/chat/box";
+import { useState } from "react";
+import SearchBox from "@/components/search/box";
 import LayoutMain from "@/components/layout/main";
 import { useEffect } from "react";
 import { getTheme, setThemeInCss } from "@/helper/local";
+import Serper, { OrganicOneType } from "@/helper/serper";
 
 export default function ChatPage() {
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function ChatPage() {
 
     return (
         <LayoutMain>
-            <ChatBox />
+            <SearchBox />
         </LayoutMain>
     );
 }

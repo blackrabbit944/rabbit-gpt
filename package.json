@@ -24,6 +24,7 @@
     "formik": "^2.4.6",
     "immer": "^10.1.1",
     "lucide-react": "^0.378.0",
+    "md5": "^2.3.0",
     "next": "14.2.3",
     "next-translate": "^2.6.2",
     "postcss-nesting": "^12.1.2",
@@ -36,10 +37,12 @@
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar": "^3.1.0",
     "tailwindcss-animate": "^1.0.7",
+    "tiktoken": "^1.0.14",
     "zustand": "^4.5.2",
     "zustand-logger-middleware": "^1.0.9"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

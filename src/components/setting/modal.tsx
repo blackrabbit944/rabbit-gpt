@@ -74,13 +74,13 @@ export default function SettingModal() {
             <DialogTrigger asChild>
                 <Button variant="outline" className="mx-4 flex justify-start px-5 text-sm mb-1">
                     <Cog8ToothIcon className="w-5 h-5 mr-2" />
-                    <div className="">Settings</div>
+                    <div className="">Setting Api Key</div>
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Settings</DialogTitle>
-                    <DialogDescription>
+                    <DialogTitle className="text-center">Setting OPENAI Api Key</DialogTitle>
+                    <DialogDescription className="text-center">
                         all settings stored in your browser , no one could read it
                     </DialogDescription>
                 </DialogHeader>
@@ -109,12 +109,6 @@ export default function SettingModal() {
                                                 <Input
                                                     label="OPENAI api key"
                                                     name="openai_api_key"
-                                                />
-                                            </div>
-                                            <div className="mb-4">
-                                                <Input
-                                                    label="Claude api key"
-                                                    name="claude_api_key"
                                                 />
                                             </div>
                                         </>

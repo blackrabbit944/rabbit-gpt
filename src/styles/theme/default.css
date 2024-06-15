@@ -19,12 +19,15 @@
 
     --color-text-main: #404040;
     --color-text-secondary: #999;
+    --color-text-placeholder: #aaa;
 
     --color-message-bg-ai: #00a9e0;
     --color-message-bg-my: #333;
 
     --color-message-ai: #fff;
     --color-message-my: #fff;
+
+    --color-code-bg: #333;
 
     --main-menu-item-bg: #fff;
     --main-menu-item-bg-hover: #f8f8f8;

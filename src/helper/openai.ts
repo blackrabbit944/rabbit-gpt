@@ -40,6 +40,8 @@ export async function sendRequest(params: sendRequestProps): Promise<string> {
 
     const opeai_api_key = getCache("openai_api_key") || "";
     const model_name = getCache("model") || "gpt-3.5-turbo";
+
+    console.log("使用的opeai_api_key", opeai_api_key);
     // const api_url = "/api/gpt";
     const api_url =
         "https://gateway.ai.cloudflare.com/v1/d3c42400d063e65d9a797c7d4dba04e4/jianda/openai/chat/completions";

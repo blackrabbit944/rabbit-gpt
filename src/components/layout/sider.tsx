@@ -1,11 +1,6 @@
 import Logo from "@/components/common/logo";
-import {
-    ChatBubbleOvalLeftIcon,
-    LanguageIcon,
-    MagnifyingGlassCircleIcon,
-    Cog8ToothIcon,
-    SparklesIcon,
-} from "@heroicons/react/24/outline";
+import { ChatBubbleOvalLeftIcon, LanguageIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleOvalLeftIcon as ChatBubbleOvalLeftIconSolid } from "@heroicons/react/24/solid";
 
 import SettingModal from "@/components/setting/modal";
 import SettingTheme from "@/components/setting/theme";
@@ -31,7 +26,11 @@ export default function Sider() {
                             setPromptKey("chat");
                         }}
                     >
-                        <ChatBubbleOvalLeftIcon className="icon" />
+                        {activePromptKey === "chat" ? (
+                            <ChatBubbleOvalLeftIconSolid className="icon" />
+                        ) : (
+                            <ChatBubbleOvalLeftIcon className="icon" />
+                        )}
                         <div className="text">Chat</div>
                     </div>
                     <div
@@ -44,10 +43,6 @@ export default function Sider() {
                     >
                         <LanguageIcon className="icon" />
                         <div className="text">Translate</div>
-                    </div>
-                    <div className="main-menu-item">
-                        <MagnifyingGlassCircleIcon className="icon" />
-                        <div className="text">Search</div>
                     </div>
                 </div>
             </div>
