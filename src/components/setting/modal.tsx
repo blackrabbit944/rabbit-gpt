@@ -79,7 +79,9 @@ export default function SettingModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle className="text-center">Setting OPENAI Api Key</DialogTitle>
+                    <DialogTitle className="text-center font-roboto-condensed">
+                        Setting OPENAI Api Key
+                    </DialogTitle>
                     <DialogDescription className="text-center">
                         all settings stored in your browser , no one could read it
                     </DialogDescription>
