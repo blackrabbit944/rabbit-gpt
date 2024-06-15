@@ -34,7 +34,7 @@ interface ContentOneType {
     content: string;
 }
 
-export const getSearchPrompt = (contentList: ContentOneType[], question): string => {
+export const getSearchPrompt = (contentList: ContentOneType[], question: string): string => {
     let allContent: string = "";
     contentList.forEach((item, index) => {
         allContent += `

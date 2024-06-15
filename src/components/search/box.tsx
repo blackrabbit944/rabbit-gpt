@@ -24,13 +24,13 @@ export default function SearchBox() {
 
     const serper = new Serper();
 
-    const searchGoogle = async (q: string) => {
-        const searchResult = await serper.search(q, 10);
-        console.log("search result", result);
-        if (searchResult.organic) {
-            setResult(searchResult.organic);
-        }
-    };
+    // const searchGoogle = async (q: string) => {
+    //     const searchResult = await serper.search(q, 10);
+    //     console.log("search result", result);
+    //     if (searchResult.organic) {
+    //         setResult(searchResult.organic);
+    //     }
+    // };
 
     const beforeRecieveMessage = useChatStore((state) => state.beforeRecieveMessage);
     const recieveMessage = useChatStore((state) => state.recieveMessage);
@@ -156,13 +156,13 @@ export default function SearchBox() {
         }
     }, [isInputFocus, tempQuestion]);
 
-    useEffect(() => {
-        if (question && question != searchedQuestion) {
-            console.log("问题改变了", question);
-            setSearchedQuestion(question);
-            searchGoogle(question);
-        }
-    }, [question, searchedQuestion, searchGoogle]);
+    // useEffect(() => {
+    //     if (question && question != searchedQuestion) {
+    //         console.log("问题改变了", question);
+    //         setSearchedQuestion(question);
+    //         searchGoogle(question);
+    //     }
+    // }, [question, searchedQuestion, searchGoogle]);
 
     return (
         <div className="chatbox-wrapper">

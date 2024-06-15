@@ -72,7 +72,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ resultList, question }) => {
         setContentList([]);
     };
 
-    const getContent = async (link: string): content => {
+    const getContent = async (link: string): Promise<string> => {
         ///判断本地是否有缓存
         let cacheKey = md5(link);
         let cacheContent = getCache(cacheKey);
@@ -134,122 +134,122 @@ const MessageBox: React.FC<MessageBoxProps> = ({ resultList, question }) => {
     }, [resultList]);
 
     ///当页面resultList发生变化的时候,我们需要重新设置页面状态
-    React.useEffect(() => {
-        console.log("页面数据发生变化", resultList);
-        if (resultList.length > 0) {
-            resetPageStatus();
-        }
+    // React.useEffect(() => {
+    //     console.log("页面数据发生变化", resultList);
+    //     if (resultList.length > 0) {
+    //         resetPageStatus();
+    //     }
 
-        ///begin to get content
-        if (resultList.length > 0) {
-            runGetContent();
-        }
-    }, [resultList]);
+    //     ///begin to get content
+    //     if (resultList.length > 0) {
+    //         runGetContent();
+    //     }
+    // }, [resultList]);
 
-    React.useEffect(() => {
-        if (finisheContentCount >= maxContentFinished) {
-            setPageStatus("waitingGpt");
+    // React.useEffect(() => {
+    //     if (finisheContentCount >= maxContentFinished) {
+    //         setPageStatus("waitingGpt");
 
-            ///请求Gpt总结数据
-            askGptForAnswer({
-                contentList: contentList,
-            });
-        }
-    }, [finisheContentCount, maxContentFinished, contentList]);
+    //         ///请求Gpt总结数据
+    //         askGptForAnswer({
+    //             contentList: contentList,
+    //         });
+    //     }
+    // }, [finisheContentCount, maxContentFinished, contentList]);
 
-    const askGptForAnswer = useCallback(
-        ({ contentList }: { contentList: ContentOneType[] }) => {
-            if (MessageList.length > 0) {
-                setPageStatus("finishedGpt");
-                return;
-            }
-            console.log("askGptForAnswer", contentList);
+    // const askGptForAnswer = useCallback(
+    //     ({ contentList }: { contentList: ContentOneType[] }) => {
+    //         if (MessageList.length > 0) {
+    //             setPageStatus("finishedGpt");
+    //             return;
+    //         }
+    //         console.log("askGptForAnswer", contentList);
 
-            ///首先我们把问题获得一个key
+    //         ///首先我们把问题获得一个key
 
-            ///然后我们把问题和内容发送给Gpt
+    //         ///然后我们把问题和内容发送给Gpt
 
-            ///把每一个内容拼成一个发字符串
-            let newContentList: ContentOneType[] = [];
-            contentList.forEach((item) => {
-                ///最多每个网页只取2000个字符串
-                if (item.content && item.content.length > 2000) {
-                    newContentList.push({
-                        number: item.number,
-                        content: item.content.slice(0, 2000),
-                    });
-                } else {
-                    newContentList.push(item);
-                }
-            });
-            console.log("newContentList", newContentList);
+    //         ///把每一个内容拼成一个发字符串
+    //         let newContentList: ContentOneType[] = [];
+    //         contentList.forEach((item) => {
+    //             ///最多每个网页只取2000个字符串
+    //             if (item.content && item.content.length > 2000) {
+    //                 newContentList.push({
+    //                     number: item.number,
+    //                     content: item.content.slice(0, 2000),
+    //                 });
+    //             } else {
+    //                 newContentList.push(item);
+    //             }
+    //         });
+    //         console.log("newContentList", newContentList);
 
-            // ///计算token是否超过了数量
+    //         // ///计算token是否超过了数量
 
-            // let newContentList: ContentOneType[] = [];
-            // if (token_count > 20000) {
-            //     console.log("token_count大于20000个token", token_count);
-            //     ///裁剪数据,裁剪方案是把3个数据中每一个都按比例裁剪
-            //     newContentList = cutContentLength({
-            //         contentList: contentList,
-            //         nowTokenCount: token_count,
-            //         maxTokenCount: 20000,
-            //     });
-            // } else {
-            //     newContentList = contentList;
-            // }
+    //         // let newContentList: ContentOneType[] = [];
+    //         // if (token_count > 20000) {
+    //         //     console.log("token_count大于20000个token", token_count);
+    //         //     ///裁剪数据,裁剪方案是把3个数据中每一个都按比例裁剪
+    //         //     newContentList = cutContentLength({
+    //         //         contentList: contentList,
+    //         //         nowTokenCount: token_count,
+    //         //         maxTokenCount: 20000,
+    //         //     });
+    //         // } else {
+    //         //     newContentList = contentList;
+    //         // }
 
-            // ////把newContentList发送给Gpt
-            let promptTemplate = getSearchPrompt(newContentList, question);
+    //         // ////把newContentList发送给Gpt
+    //         let promptTemplate = getSearchPrompt(newContentList, question);
 
-            beforeRecieveMessage({
-                searchKey: searchKey,
-            });
+    //         beforeRecieveMessage({
+    //             searchKey: searchKey,
+    //         });
 
-            sendRequest({
-                msgs: [
-                    {
-                        role: "user",
-                        content: promptTemplate,
-                    },
-                ],
-                onText: (data) => {
-                    console.log("执行到onText", data);
-                    recieveMessage({
-                        searchKey: searchKey,
-                        message: {
-                            id: data.id,
-                            content: data.text,
-                            from: "assistant",
-                            timestamp: getUnixtimestamp(),
-                            isFinished: false,
-                        },
-                    });
-                },
-                onFinished: (data) => {
-                    console.log("执行到onFinished", data);
-                    recieveMessageSuccess({
-                        searchKey: searchKey,
-                        message: {
-                            id: data.id,
-                            content: data.text,
-                            from: "assistant",
-                            timestamp: getUnixtimestamp(),
-                            isFinished: true,
-                        },
-                    });
-                    setPageStatus("finishedGpt");
-                },
-                onError: (error) => {
-                    recieveMessageError({
-                        searchKey: searchKey,
-                    });
-                    setPageStatus("finishedGpt");
-                },
-            });
-        },
-        [searchKey, MessageList]
-    );
+    //         sendRequest({
+    //             msgs: [
+    //                 {
+    //                     role: "user",
+    //                     content: promptTemplate,
+    //                 },
+    //             ],
+    //             onText: (data) => {
+    //                 console.log("执行到onText", data);
+    //                 recieveMessage({
+    //                     searchKey: searchKey,
+    //                     message: {
+    //                         id: data.id,
+    //                         content: data.text,
+    //                         from: "assistant",
+    //                         timestamp: getUnixtimestamp(),
+    //                         isFinished: false,
+    //                     },
+    //                 });
+    //             },
+    //             onFinished: (data) => {
+    //                 console.log("执行到onFinished", data);
+    //                 recieveMessageSuccess({
+    //                     searchKey: searchKey,
+    //                     message: {
+    //                         id: data.id,
+    //                         content: data.text,
+    //                         from: "assistant",
+    //                         timestamp: getUnixtimestamp(),
+    //                         isFinished: true,
+    //                     },
+    //                 });
+    //                 setPageStatus("finishedGpt");
+    //             },
+    //             onError: (error) => {
+    //                 recieveMessageError({
+    //                     searchKey: searchKey,
+    //                 });
+    //                 setPageStatus("finishedGpt");
+    //             },
+    //         });
+    //     },
+    //     [searchKey, MessageList]
+    // );
 
     return (
         <div>

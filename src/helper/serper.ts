@@ -29,6 +29,7 @@ interface SearchResult {
         link: string;
         date: string;
     };
+    images?: Image[];
     organic?: OrganicOneType[];
     relatedSearches?: {
         query: string;
@@ -241,12 +242,15 @@ class Serper {
                 res.on("end", () => {
                     try {
                         const json_data: SearchResult = JSON.parse(data);
-                        const formated_images: Image[] = json_data.images.map((image) => ({
-                            url: image.imageUrl,
-                            title: image.title,
-                            width: image.imageWidth,
-                            height: image.imageHeight,
-                        }));
+                        let formated_images: Image[] = [];
+                        if (json_data.images) {
+                            formated_images = json_data.images?.map((image) => ({
+                                imageUrl: image.imageUrl,
+                                title: image.title,
+                                imageWidth: image.imageWidth,
+                                imageHeight: image.imageHeight,
+                            }));
+                        }
                         resolve(formated_images);
                     } catch (error) {
                         reject(error);
