@@ -121,10 +121,13 @@ body {
         @apply border-r theme-border-main hidden sm:block;
         background-color: var(--bg-sider);
     }
+    .chatbox-wrapper .title {
+        @apply pl-0;
+    }
     .layout-right {
         z-index: 1;
-        height: calc(100vh - 3.5rem);
-        padding: 3.5rem 0 0 0;
+        /* height: calc(100vh - 3.5rem); */
+        /* padding: 3.5rem 0 0 0; */
     }
 }
 
@@ -224,7 +227,7 @@ body {
     }
     .message-box {
         @apply flex-grow w-full overflow-y-auto theme-scroll overflow-x-hidden;
-        height: calc(100vh - 3rem - 15rem);
+        height: calc(100vh - 15rem);
     }
     .input {
         resize: none;

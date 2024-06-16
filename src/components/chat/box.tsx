@@ -11,6 +11,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import ModelSelect from "./modelSelect";
 import { getUnixtimestamp } from "@/helper/misc";
 import TranslateSetting from "@/components/setting/translate";
+import MobileHeader from "@/components/mobile/header";
 
 export default function ChatBox() {
     let messagesEndRef = React.useRef<HTMLDivElement>(null);
@@ -129,6 +130,8 @@ export default function ChatBox() {
         <div className="chatbox-wrapper">
             <div className="title">
                 <div className="flex justify-start items-center">
+                    <MobileHeader />
+
                     <h1 className="mr-4 font-roboto-condensed capitalize">{activePromptKey}</h1>
                 </div>
                 <div>

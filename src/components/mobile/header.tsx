@@ -13,7 +13,7 @@ export default function MobileHeader() {
     return (
         <div className="block sm:hidden">
             <Sheet>
-                <div className="flex justify-between items-center fixed top-0 w-full bg-background z-30 h-14 shadow-md">
+                <div className="flex justify-between items-center w-full  z-30 h-16 ">
                     <SheetTrigger>
                         <button className="group h-12 w-12 rounded-lg">
                             <div className="grid justify-items-center gap-1">

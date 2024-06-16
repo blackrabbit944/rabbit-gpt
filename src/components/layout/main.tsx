@@ -1,5 +1,5 @@
 import Sider from "@/components/layout/sider";
-import MobileHeader from "@/components/mobile/header";
+// import MobileHeader from "@/components/mobile/header";
 export default function LayoutMain({
     children,
 }: Readonly<{
@@ -11,7 +11,6 @@ export default function LayoutMain({
                 <Sider />
             </div>
             <div className="layout-right">{children}</div>
-            <MobileHeader />
         </div>
     );
 }
