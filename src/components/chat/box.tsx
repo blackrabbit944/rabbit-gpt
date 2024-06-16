@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useEffect, useState, useMemo, useCallback, use } from "react";
 
 import ChatInput from "@/components/chat/input";
 import { MessageType, PreMessageType } from "@/types/message";
@@ -126,12 +126,29 @@ export default function ChatBox() {
         }
     }, [MessageList, scrollToBottom]);
 
+    const [pageHeight, setPageHeight] = useState(0);
+    useEffect(() => {
+        setPageHeight(window.innerHeight);
+        window.addEventListener("resize", () => {
+            setPageHeight(window.innerHeight);
+        });
+        return () => {
+            window.removeEventListener("resize", () => {
+                setPageHeight(window.innerHeight);
+            });
+        };
+    }, []);
+
+    //想把pageHeight作为变量传给css中,可以用var(--page-height)的方式使用
+    useEffect(() => {
+        document.documentElement.style.setProperty("--js-page-height", `${pageHeight}px`);
+    }, [pageHeight]);
+
     return (
         <div className="chatbox-wrapper">
             <div className="title">
                 <div className="flex justify-start items-center">
                     <MobileHeader />
-
                     <h1 className="mr-4 font-roboto-condensed capitalize">{activePromptKey}</h1>
                 </div>
                 <div>

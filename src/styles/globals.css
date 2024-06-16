@@ -208,7 +208,7 @@ body {
     }
 }
 .hkey-intro {
-    @apply text-xs items-center flex justify-start gap-2 absolute bottom-4;
+    @apply text-xs items-center flex justify-start gap-2 absolute bottom-4 hidden md:block;
 }
 .hkey {
     @apply theme-btn-default-bg py-1 px-2  border theme-border-light theme-rounded-sm;
@@ -306,7 +306,7 @@ body {
 }
 
 .clean-btn {
-    @apply theme-btn-default-bg2 theme-rounded-base px-4 py-2 flex justify-start items-center gap-2 cursor-pointer;
+    @apply theme-btn-default-bg2 theme-rounded-base px-4 py-2 flex justify-start items-center gap-2 cursor-pointer font-bold;
     .icon {
         @apply w-5 h-5;
     }
@@ -457,6 +457,11 @@ body {
 }
 textarea::placeholder {
     color: var(--color-text-placeholder);
+}
+.layout-main,
+.chatbox-wrapper,
+.sider {
+    height: var(--js-page-height);
 }
 
 @media screen and (min-width: 640px) {
