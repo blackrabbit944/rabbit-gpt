@@ -6,8 +6,7 @@ RabbitGPT is a beautiful frontend for CHATGPT
 
 Check out the demo [here](https://ai.jianda.com)
 
-![Screenshot 1](https://imgur.com/aSkKrp5)
-Screenshot 2](screenshot_placeholder2.jpg)
+![DarkTheme Screenshot](https://i.ibb.co/nrGRbFK/Tiny-Snap-2024-06-16-12-24-28.png)
 
 ## Getting Started
 
