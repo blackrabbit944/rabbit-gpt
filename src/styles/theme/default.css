@@ -1,27 +1,29 @@
 .theme-default {
-    --color-primary: #00a9e0;
+    --color-primary: #a82e34;
     --color-secondary: #34495e;
 
-    --bg-main: #f8f8f8;
-    --bg-sider: #fff;
+    --bg-main: rgba(255, 255, 255, 0.1);
+    --bg-sider: none;
 
-    --color-bg: #fff;
-    --color-bg-popover: #fff;
+    --color-bg: rgba(255, 255, 255, 0.1);
+    --color-bg-popover: #333;
+
+    --color-modal-bg: #555;
 
     --color-text-on-primary: #fff;
     --color-text-on-secondary: #fff;
 
-    --color-btn-default-bg: #fff;
-    --color-btn-default-bg2: #e8e8e8;
+    --color-btn-default-bg: rgba(255, 255, 255, 0.1);
+    --color-btn-default-bg2: rgba(255, 255, 255, 0.1);
 
-    --color-border: #ddd;
-    --color-border-light: #e5e5e5;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-border-light: rgba(0, 0, 0, 0.1);
 
     --color-text-main: #404040;
     --color-text-secondary: #999;
-    --color-text-placeholder: #aaa;
+    --color-text-placeholder: rgba(255, 255, 255, 0.5);
 
-    --color-message-bg-ai: #00a9e0;
+    --color-message-bg-ai: #847156;
     --color-message-bg-my: #333;
 
     --color-message-ai: #fff;
@@ -29,12 +31,12 @@
 
     --color-code-bg: #333;
 
-    --main-menu-item-bg: #fff;
-    --main-menu-item-bg-hover: #f8f8f8;
-    --main-menu-item-text: #555;
+    --main-menu-item-bg: none;
+    --main-menu-item-bg-hover: rgba(255, 255, 255, 0.1);
+    --main-menu-item-text: #fff;
 
-    --color-scroll-track: #eee;
-    --color-scroll-thumb: #888;
+    --color-scroll-track: rgba(255, 255, 255, 0.1);
+    --color-scroll-thumb: rgba(255, 255, 255, 0.8);
 
     --rounded-message: 1rem;
 
@@ -45,20 +47,15 @@
     --shadow-1: 0 2px 4px #0000000f;
     --border-1: 1px solid rgba(0, 0, 0, 0.1);
 
+    --page-height: calc(100vh - 40px);
+
     body {
         font-family: "Pingfang SC", Microsoft Yahei, Arial, sans-serif;
-    }
+        background-color: #111;
 
-    .main-menu-item {
-        border: 1px solid #fff;
-    }
-    .main-menu-item:hover {
-        border: 1px solid #eee;
-    }
-
-    .layout-right {
-        background-image: radial-gradient(#ddd 1px, #f8f8f8 1px);
-        background-position: 353.072px 5605.22px;
-        background-size: 13.9274px 13.9274px;
+        color: #fff;
+        background-image: url("https://plus.unsplash.com/premium_photo-1663840297086-dbd47bccef74?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-image: url("https://images.unsplash.com/photo-1718030463382-896949a8d53a?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
     }
 }

@@ -50,36 +50,4 @@
         background-image: url("https://images.unsplash.com/photo-1483653364400-eedcfb9f1f88?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
     }
-
-    .theme-modal-bg {
-        background-color: var(--color-modal-bg);
-    }
-    .layout-main {
-        height: var(--page-height);
-        border-radius: 16px;
-        margin: 20px;
-        @apply max-w-screen-2xl mx-auto;
-        overflow: hidden;
-        background: none;
-        backdrop-filter: blur(40px);
-        background-color: rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        .chatbox-wrapper,
-        .sider {
-            height: var(--page-height);
-        }
-    }
-
-    .main-menu .main-menu-item.active {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
-    }
-    .main-menu .main-menu-item.active .icon,
-    .text-logo {
-        color: #fff;
-    }
-
-    .main-menu-item {
-        @apply font-roboto-condensed;
-    }
 }

@@ -142,8 +142,7 @@ body {
 }
 
 .sider {
-    @apply flex flex-col justify-between h-screen pb-8;
-    background-color: var(--bg-sider);
+    @apply flex flex-col justify-between h-screen pb-8 bg-black/70;
 }
 
 .text-logo {
@@ -423,5 +422,47 @@ body {
     @apply flex justify-between items-center pb-4 mb-4 border-b theme-border-main;
     &:last-child {
         @apply pb-0 mb-0 border-0;
+    }
+}
+
+.form-control .label {
+    @apply text-sm font-bold flex flex-col justify-start mb-2;
+}
+
+.theme-modal-bg {
+    background-color: var(--color-modal-bg);
+}
+.layout-main {
+    overflow: hidden;
+    background: none;
+    backdrop-filter: blur(40px);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    @apply max-w-screen-2xl mx-auto md:my-[20px] rounded-none md:rounded-[1rem];
+}
+
+.main-menu .main-menu-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.main-menu .main-menu-item.active .icon,
+.text-logo {
+    color: #fff;
+}
+.main-menu-item {
+    @apply font-roboto-condensed;
+}
+textarea::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+@media screen and (min-width: 640px) {
+    .layout-main,
+    .chatbox-wrapper,
+    .sider {
+        height: var(--page-height);
+    }
+    .sider {
+        background-color: var(--bg-sider);
     }
 }

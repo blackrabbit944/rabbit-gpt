@@ -17,16 +17,16 @@ export default function MobileHeader() {
                     <SheetTrigger>
                         <button className="group h-12 w-12 rounded-lg">
                             <div className="grid justify-items-center gap-1">
-                                <span className="h-0.5 w-5 rounded-full bg-black transition group-hover:rotate-45 group-hover:translate-y-1.5"></span>
-                                <span className="h-0.5 w-5 rounded-full bg-black group-hover:scale-x-0 transition"></span>
-                                <span className="h-0.5 w-5 rounded-full bg-black group-hover:-rotate-45 group-hover:-translate-y-1.5"></span>
+                                <span className="h-0.5 w-5 rounded-full bg-white transition group-hover:rotate-45 group-hover:translate-y-1.5"></span>
+                                <span className="h-0.5 w-5 rounded-full bg-white group-hover:scale-x-0 transition"></span>
+                                <span className="h-0.5 w-5 rounded-full bg-white group-hover:-rotate-45 group-hover:-translate-y-1.5"></span>
                             </div>
                         </button>
                     </SheetTrigger>
                     <div></div>
                     <div></div>
                 </div>
-                <SheetContent className="p-0">
+                <SheetContent className="p-0 border-black/40">
                     <Sider />
                 </SheetContent>
             </Sheet>

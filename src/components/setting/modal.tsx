@@ -109,7 +109,8 @@ export default function SettingModal() {
                                         <>
                                             <div className="mb-4">
                                                 <Input
-                                                    label="OPENAI api key"
+                                                    label="Api Key"
+                                                    className=""
                                                     name="openai_api_key"
                                                 />
                                             </div>
