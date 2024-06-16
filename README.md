@@ -26,7 +26,7 @@ RabbitGPT is made with NEXT.JS, TailwindCSS
 GitHub Tags
 ![GitHub license](https://img.shields.io/badge/license-GPL%203.0-blue.svg)
 
-![GitHub stars](https://img.shields.io/github/st/blackrabbit944/rabbit-gpt)
+![GitHub stars](https://img.shields.io/github/stars/blackrabbit944/rabbit-gpt)
 
 ![GitHub forks](https://img.shields.io/github/forks/blackrabbit944/rabbit-gpt)
 
